@@ -27,6 +27,7 @@ nav a {
   transition: all 0.3s ease;
   position: relative;
   padding-bottom: 5px;
+  font-size: 2em; /* Added to make links larger */
 }
 nav a:hover {
   color: white; /* Changed from #004499 to white */
@@ -59,9 +60,9 @@ main {
 }
 h1 {
   margin-bottom: 1.5em;
-  font-size: 2.5em;
-  color: white; /* Changed from #333 to white */
-  border-bottom: 2px solid transparent; /* Changed from #e0e0e0 to transparent */
+  font-size: 4em; /* Increased from 2.5em to 4em */
+  color: white;
+  border-bottom: 2px solid transparent;
   padding-bottom: 0.5em;
   font-weight: 500;
 }
@@ -173,7 +174,10 @@ img:hover {
     margin: 1em;
   }
   h1 {
-    font-size: 2em;
+    font-size: 3em; /* Adjusted from 2em to 3em for mobile */
+  }
+  nav a {
+    font-size: 1.7em; /* Adjusted size for mobile */
   }
   .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
