@@ -23,6 +23,50 @@
       background-color: white !important;
     }
   </style>
+  <script>
+    // Function to set the background image based on time
+    function setBackgroundByTime() {
+      // Get current time
+      const now = new Date();
+      const hours = now.getHours();
+      
+      // Determine which 8-hour segment of the day we're in (0-7, 8-15, 16-23)
+      const segment = Math.floor(hours / 8);
+      
+      // Choose background based on time segment
+      let backgroundImage;
+      switch(segment) {
+        case 0: // 12am-7:59am
+          backgroundImage = 'background.jpg';
+          break;
+        case 1: // 8am-3:59pm
+          backgroundImage = 'background-orange.jpg';
+          break;
+        case 2: // 4pm-11:59pm
+          backgroundImage = 'background-green.jpg';
+          break;
+        default:
+          backgroundImage = 'background.jpg'; // Fallback
+      }
+      
+      // Set the CSS custom property for the background image
+      document.documentElement.style.setProperty('--background-image', `url('${backgroundImage}')`);
+    }
+    
+    // Run the function when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      setBackgroundByTime();
+      
+      // Set up navigation active class
+      const path = window.location.pathname.split("/").pop();
+      const links = document.querySelectorAll("nav a");
+      links.forEach(link => {
+        if (link.getAttribute("href") === path || (path === "" && link.getAttribute("href") === "index.html")) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
 </head>
 <body class="home">
   <main>
