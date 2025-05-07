@@ -4,6 +4,30 @@
   <meta charset="UTF-8">
   <title>Dichtung - Maximilian Juhasz</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Override any conflicting styles to ensure text is black/blue on this page */
+    h1 {
+      color: #333 !important;
+    }
+    nav a {
+      color: #0066cc !important;
+    }
+    nav a:hover, nav a.active {
+      color: #004499 !important;
+    }
+    nav a::after {
+      background-color: #004499 !important;
+    }
+    main {
+      background-color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    }
+    nav {
+      background-color: #ffffff !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+      border-bottom: 1px solid #e0e0e0 !important;
+    }
+  </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const slides = document.querySelectorAll('.slide');
