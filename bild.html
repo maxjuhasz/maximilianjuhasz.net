@@ -4,34 +4,53 @@
   <meta charset="UTF-8">
   <title>Bild - Maximilian Juhasz</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Override any conflicting styles to ensure text is black/blue on this page */
+    h1 {
+      color: #333 !important;
+    }
+    nav a {
+      color: #0066cc !important;
+    }
+    nav a:hover, nav a.active {
+      color: #004499 !important;
+    }
+    nav a::after {
+      background-color: #004499 !important;
+    }
+    main {
+      background-color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    }
+    nav {
+      background-color: #ffffff !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+      border-bottom: 1px solid #e0e0e0 !important;
+    }
+  </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const slides = document.querySelectorAll('.slide');
       const totalSlides = slides.length;
       let currentSlide = 0;
       const slideCounter = document.getElementById('slide-counter');
-
       updateSlideVisibility();
       updateCounter();
-
       document.getElementById('prev-btn').addEventListener('click', function() {
         currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
         updateSlideVisibility();
         updateCounter();
       });
-
       document.getElementById('next-btn').addEventListener('click', function() {
         currentSlide = (currentSlide + 1) % totalSlides;
         updateSlideVisibility();
         updateCounter();
       });
-
       function updateSlideVisibility() {
         slides.forEach((slide, index) => {
           slide.classList.toggle('active', index === currentSlide);
         });
       }
-
       function updateCounter() {
         slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
       }
@@ -46,7 +65,6 @@
   </nav>
   <main>
     <h1>Bild</h1>
-
     <div class="slider-container">
       <div class="slider">
         <div class="slide active"><img src="Bild/1.jpg" alt="Bild 1"></div>
@@ -60,7 +78,6 @@
         <div class="slide"><img src="Bild/9.jpg" alt="Bild 9"></div>
         <div class="slide"><img src="Bild/10.jpg" alt="Bild 10"></div>
       </div>
-
       <div class="slider-controls">
         <button id="prev-btn" class="slider-btn">←</button>
         <span id="slide-counter" class="counter">1 / 10</span>
