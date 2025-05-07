@@ -231,32 +231,3 @@ body.home {
   background: url('https://www.maximilianjuhasz.net/background.jpg') no-repeat center center fixed !important;
   background-size: cover !important;
 }
-
-/* Remove background and box on homepage */
-body.home main {
-  background: transparent;
-  box-shadow: none;
-  padding: 2em;
-  max-width: 1000px;
-  margin: 2em auto;
-}
-
-body.home h1 {
-  color: white;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-}
-
-/* Optional: white links for nav on homepage */
-body.home nav a {
-  color: white;
-}
-
-body.home nav a:hover,
-body.home nav a.active {
-  color: #ddd;
-}
-
-body.home nav a::after {
-  background-color: #ddd;
-}
-
