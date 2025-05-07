@@ -12,26 +12,38 @@ body {
   padding-top: 20px;
 }
 nav {
+  background-color: #ffffff;
+  padding: 1.2em 2em;
+  border-bottom: 1px solid #e0e0e0;
   display: flex;
   gap: 2.5em;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   z-index: 100;
+}
+
+/* Remove background and styling only on home page */
+body.home nav {
   background-color: transparent;
   box-shadow: none;
   border: none;
-  /* Completely removed all box-creating properties */
+  padding: 0;
 }
 nav a {
   text-decoration: none;
-  color: white; /* Changed from #0066cc to white */
+  color: #0066cc; /* Default blue color for non-home pages */
   font-weight: 600;
   transition: all 0.3s ease;
   position: relative;
   padding-bottom: 5px;
   font-size: 2em; /* Added to make links larger */
 }
+
 nav a:hover {
-  color: white; /* Changed from #004499 to white */
+  color: #004499; /* Default hover color for non-home pages */
 }
+
 nav a::after {
   content: '';
   position: absolute;
@@ -39,32 +51,61 @@ nav a::after {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: white; /* Changed from #004499 to white */
+  background-color: #004499; /* Default underline color for non-home pages */
   transition: width 0.3s ease;
 }
+
 nav a:hover::after {
   width: 100%;
 }
-/* Highlight the current page in navigation */
-nav a.active {
-  color: white; /* Changed from #004499 to white */
-}
+
 nav a.active::after {
   width: 100%;
+}
+
+/* Only apply white text colors on home page */
+body.home nav a {
+  color: white;
+}
+
+body.home nav a:hover {
+  color: white;
+}
+
+body.home nav a::after,
+body.home nav a.active::after {
+  background-color: white;
+}
+
+body.home nav a.active {
+  color: white;
 }
 main {
   padding: 2em;
   max-width: 1000px;
   margin: 1.5em auto;
-  /* Removed background-color, border-radius, and box-shadow to eliminate white box */
+  background-color: #ffffff; /* Default white background for non-home pages */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Remove background and shadow only on home page */
+body.home main {
+  background-color: transparent;
+  box-shadow: none;
 }
 h1 {
   margin-bottom: 1.5em;
   font-size: 4em; /* Increased from 2.5em to 4em */
-  color: white;
+  color: #333; /* Default color for non-home pages */
   border-bottom: 2px solid transparent;
   padding-bottom: 0.5em;
   font-weight: 500;
+}
+
+/* Only apply white text color on home page */
+body.home h1 {
+  color: white;
 }
 img {
   max-width: 100%;
@@ -165,30 +206,41 @@ img:hover {
   nav {
     flex-direction: column;
     align-items: center;
+    padding: 1em;
     gap: 1em;
-    background-color: transparent;
-    padding: 0;
   }
+  
+  body.home nav {
+    padding: 0;
+    background-color: transparent;
+  }
+  
   main {
     padding: 1.5em;
     margin: 1em;
   }
+  
   h1 {
     font-size: 3em; /* Adjusted from 2em to 3em for mobile */
   }
+  
   nav a {
     font-size: 1.7em; /* Adjusted size for mobile */
   }
+  
   .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5em;
   }
+  
   .slider-container {
     max-width: 100%;
   }
+  
   .slider {
     aspect-ratio: 1/1.25;
   }
+  
   .slider-btn {
     width: 36px;
     height: 36px;
