@@ -104,8 +104,27 @@ h1 {
 }
 
 /* Only apply white text color on home page */
-body.home h1 {
-  color: white;
+/* Fix for dichtung.html and bild.html */
+body.dichtung h1, 
+body.bild h1 {
+  color: #333 !important; /* Force black text for headers on these pages */
+}
+
+body.dichtung nav a, 
+body.bild nav a {
+  color: #0066cc !important; /* Force blue text for links on these pages */
+}
+
+body.dichtung nav a:hover, 
+body.bild nav a:hover,
+body.dichtung nav a.active, 
+body.bild nav a.active {
+  color: #004499 !important; /* Force darker blue for hover/active states */
+}
+
+body.dichtung nav a::after, 
+body.bild nav a::after {
+  background-color: #004499 !important; /* Force blue underline */
 }
 img {
   max-width: 100%;
