@@ -92,11 +92,98 @@ img:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Grid layout for images in Bild and Dichtung pages */
+/* Grid layout for images in Bild page */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2em;
+}
+
+/* Slider styles for Dichtung page */
+.slider-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  aspect-ratio: 3/4;
+  max-height: 80vh;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.slider-btn {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.slider-btn:hover {
+  background-color: #004499;
+  transform: scale(1.1);
+}
+
+.slider-btn:active {
+  transform: scale(0.95);
+}
+
+.counter {
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+}
+
+/* Ensure images in slider don't have the hover effect from main CSS */
+.slider img:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 /* Responsive adjustments */
@@ -120,5 +207,19 @@ img:hover {
   .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5em;
+  }
+  
+  .slider-container {
+    max-width: 100%;
+  }
+  
+  .slider {
+    aspect-ratio: 1/1.25;
+  }
+  
+  .slider-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
 }
