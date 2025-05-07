@@ -4,8 +4,48 @@
   <meta charset="UTF-8">
   <title>Dichtung - Maximilian Juhasz</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      let currentSlide = 0;
+      const slideCounter = document.getElementById('slide-counter');
+      
+      // Initialize
+      updateSlideVisibility();
+      updateCounter();
+      
+      // Button event listeners
+      document.getElementById('prev-btn').addEventListener('click', function() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlideVisibility();
+        updateCounter();
+      });
+      
+      document.getElementById('next-btn').addEventListener('click', function() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlideVisibility();
+        updateCounter();
+      });
+      
+      // Helper functions
+      function updateSlideVisibility() {
+        slides.forEach((slide, index) => {
+          if (index === currentSlide) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+      }
+      
+      function updateCounter() {
+        slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+      }
+    });
+  </script>
 </head>
-<body>
+<body class="dichtung">
   <nav>
     <a href="index.html">Home</a>
     <a href="dichtung.html">Dichtung</a>
@@ -13,11 +53,32 @@
   </nav>
   <main>
     <h1>Dichtung</h1>
-    <img src="Dichtung/1.png" alt="Gedicht 1">
-    <img src="Dichtung/2.png" alt="Gedicht 2">
-    <img src="Dichtung/3.png" alt="Gedicht 3">
-    <img src="Dichtung/4.png" alt="Gedicht 4">
-    <img src="Dichtung/5.png" alt="Gedicht 5">
+    
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slide">
+          <img src="Dichtung/1.png" alt="Gedicht 1">
+        </div>
+        <div class="slide">
+          <img src="Dichtung/2.png" alt="Gedicht 2">
+        </div>
+        <div class="slide">
+          <img src="Dichtung/3.png" alt="Gedicht 3">
+        </div>
+        <div class="slide">
+          <img src="Dichtung/4.png" alt="Gedicht 4">
+        </div>
+        <div class="slide">
+          <img src="Dichtung/5.png" alt="Gedicht 5">
+        </div>
+      </div>
+      
+      <div class="slider-controls">
+        <button id="prev-btn" class="slider-btn">←</button>
+        <span id="slide-counter" class="counter">1 / 5</span>
+        <button id="next-btn" class="slider-btn">→</button>
+      </div>
+    </div>
   </main>
 </body>
 </html>
