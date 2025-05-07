@@ -5,7 +5,7 @@
   <title>Maximilian Juhasz</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="home">
+<body>
   <main>
     <h1>Maximilian Juhasz</h1>
     <nav>
@@ -13,5 +13,15 @@
       <a href="bild.html">Bild</a>
     </nav>
   </main>
+  <script>
+    // Highlight current page link
+    const path = window.location.pathname.split("/").pop();
+    const links = document.querySelectorAll("nav a");
+    links.forEach(link => {
+      if (link.getAttribute("href") === path || (path === "" && link.getAttribute("href") === "index.html")) {
+        link.classList.add("active");
+      }
+    });
+  </script>
 </body>
 </html>
