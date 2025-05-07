@@ -5,20 +5,22 @@
   <title>Maximilian Juhasz</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Override styles to remove white box and make text white */
+    /* Additional override styles to ensure no white boxes */
+    body, main, nav {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
     main {
-      background: transparent !important; /* Remove any background */
-      box-shadow: none !important; /* Remove any box shadow */
-      padding: 0 !important; /* Remove any padding that might create space */
+      background-color: transparent !important;
     }
-    
     h1, nav a {
-      color: white !important; /* Make header and links white */
-    }
-    
-    /* Maintain any hover effects but ensure they're also white */
-    nav a:hover {
       color: white !important;
+    }
+    nav a:hover, nav a.active {
+      color: white !important;
+    }
+    nav a::after, nav a:hover::after, nav a.active::after {
+      background-color: white !important;
     }
   </style>
 </head>
