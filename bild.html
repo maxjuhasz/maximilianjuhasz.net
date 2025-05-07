@@ -4,8 +4,41 @@
   <meta charset="UTF-8">
   <title>Bild - Maximilian Juhasz</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      let currentSlide = 0;
+      const slideCounter = document.getElementById('slide-counter');
+
+      updateSlideVisibility();
+      updateCounter();
+
+      document.getElementById('prev-btn').addEventListener('click', function() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlideVisibility();
+        updateCounter();
+      });
+
+      document.getElementById('next-btn').addEventListener('click', function() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlideVisibility();
+        updateCounter();
+      });
+
+      function updateSlideVisibility() {
+        slides.forEach((slide, index) => {
+          slide.classList.toggle('active', index === currentSlide);
+        });
+      }
+
+      function updateCounter() {
+        slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+      }
+    });
+  </script>
 </head>
-<body>
+<body class="bild">
   <nav>
     <a href="index.html">Home</a>
     <a href="dichtung.html">Dichtung</a>
@@ -13,16 +46,27 @@
   </nav>
   <main>
     <h1>Bild</h1>
-    <img src="Bild/1.jpg" alt="Bild 1">
-    <img src="Bild/2.jpg" alt="Bild 2">
-    <img src="Bild/3.jpg" alt="Bild 3">
-    <img src="Bild/4.jpg" alt="Bild 4">
-    <img src="Bild/5.jpg" alt="Bild 5">
-    <img src="Bild/6.jpg" alt="Bild 6">
-    <img src="Bild/7.jpg" alt="Bild 7">
-    <img src="Bild/8.jpg" alt="Bild 8">
-    <img src="Bild/9.jpg" alt="Bild 9">
-    <img src="Bild/10.jpg" alt="Bild 10">
+
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slide active"><img src="Bild/1.jpg" alt="Bild 1"></div>
+        <div class="slide"><img src="Bild/2.jpg" alt="Bild 2"></div>
+        <div class="slide"><img src="Bild/3.jpg" alt="Bild 3"></div>
+        <div class="slide"><img src="Bild/4.jpg" alt="Bild 4"></div>
+        <div class="slide"><img src="Bild/5.jpg" alt="Bild 5"></div>
+        <div class="slide"><img src="Bild/6.jpg" alt="Bild 6"></div>
+        <div class="slide"><img src="Bild/7.jpg" alt="Bild 7"></div>
+        <div class="slide"><img src="Bild/8.jpg" alt="Bild 8"></div>
+        <div class="slide"><img src="Bild/9.jpg" alt="Bild 9"></div>
+        <div class="slide"><img src="Bild/10.jpg" alt="Bild 10"></div>
+      </div>
+
+      <div class="slider-controls">
+        <button id="prev-btn" class="slider-btn">←</button>
+        <span id="slide-counter" class="counter">1 / 10</span>
+        <button id="next-btn" class="slider-btn">→</button>
+      </div>
+    </div>
   </main>
 </body>
 </html>
